@@ -22,19 +22,19 @@ client.connect(err => {
 
 app.get('/city/:name', (req, res) => {
     db = client.db("allCities");
-    db.collection('cities').count(function (err, count) {
+    db.collection('cities').count(async function (err, count) {
         if (!err && count === 0) {
             let cityData = fs.readFileSync('city.list.json');
             let cities = JSON.parse(cityData);
-            db.collection('cities').insertMany(cities);
+            await db.collection('cities').insertMany(cities);
         }
-    });
-    db.collection('cities').find({"name": req.params.name}).toArray((err, result) => {
-        if (err) {
-            console.log(err);
-            return res.sendStatus(500);
-        }
-        res.json({result});
+        db.collection('cities').find({"name": req.params.name}).toArray((err, result) => {
+            if (err) {
+                console.log(err);
+                return res.sendStatus(500);
+            }
+            res.json({ result });
+        });
     });
 });
 
