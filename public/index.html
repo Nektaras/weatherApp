@@ -8,19 +8,18 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="script.js"></script>
-    <link href="reset.css" rel="stylesheet"> 
-    <link href="style.css" rel="stylesheet"> 
-    <title>My Weather</title>
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/media.css" rel="stylesheet">
+    <title>Weather App</title>
 </head>
 
 <body>
     <div id="container">
         <div id="listForm">
-            <form action="">
-                <input id="inputCity" type="text" name="city">
-                <input id="findButton" type="button" value="Find">
-            </form>
-            <ul id="cities_found" style="display: none;"></ul>
+            <input id="inputCity" type="text" name="city">
+            <button id="findButton">Find</button>
+            <ul id="cities_found"></ul>
         </div>
         <ul id="my_cities"></ul>
         <div id="current_position"></div>

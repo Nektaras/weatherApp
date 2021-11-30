@@ -56,7 +56,8 @@ class MainView {
         }
 
         else for (let i = 0; i < array.length; i++) {
-            let li = $("<li></li>").html(`${array[i].city}, ${array[i].country}</br>Weather: ${array[i].weather}</br>Temperature: ${array[i].temperature}</br>Wind speed: ${array[i].wind}</br>`);
+            let weather = array[i].weather.charAt(0).toUpperCase() + array[i].weather.slice(1);
+            let li = $("<li></li>").html(`${array[i].city}, ${array[i].country}</br><img src="https://openweathermap.org/img/wn/${array[i].icon}.png"> ${weather}</br>Temperature: ${array[i].temperature}°C</br>Wind speed: ${array[i].wind}m/s</br>`);
             let buttonDelete = $(`<button class="${array[i].id} deleteButton"></button>`).text("Delete");
             li.append(buttonDelete);
             $myCities.append(li);
@@ -65,8 +66,9 @@ class MainView {
     }
 
     showMyWeather(myWeather) {
+        let weather = myWeather.weather.charAt(0).toUpperCase() + myWeather.weather.slice(1);
         let $myPostion = $("#current_position");
-        $myPostion.html(`${myWeather.city}, ${myWeather.country}</br>Weather: ${myWeather.weather}</br>Temperature: ${myWeather.temperature}</br>Wind speed: ${myWeather.wind}</br>`);
+        $myPostion.html(`${myWeather.city}, ${myWeather.country}</br><img src="https://openweathermap.org/img/wn/${myWeather.icon}.png"> ${weather}</br>Temperature: ${myWeather.temperature}°C</br>Wind speed: ${myWeather.wind}m/s</br>`);
     }
 }
 

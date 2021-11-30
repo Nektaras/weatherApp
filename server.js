@@ -29,12 +29,12 @@ app.get('/city/:name', (req, res) => {
             db.collection('cities').insertMany(cities);
         }
     });
-    db.collection('cities').find({ "name": req.params.name }).toArray((err, result) => {
+    db.collection('cities').find({"name": req.params.name}).toArray((err, result) => {
         if (err) {
             console.log(err);
             return res.sendStatus(500);
         }
-        res.json({ result });
+        res.json({result});
     });
 });
 
@@ -52,6 +52,7 @@ app.get('/:lat,:lon', async (req, res) => {
         "city": response.name,
         "country": response.sys.country,
         "weather": response.weather[0].description,
+        "icon": response.weather[0].icon,
         "temperature": Math.round(response.main.temp),
         "wind": Math.round(response.wind.speed)
     });
@@ -81,6 +82,7 @@ app.get("/myCities", (req, res) => {
                 "city": response.name,
                 "country": response.sys.country,
                 "weather": response.weather[0].description,
+                "icon": response.weather[0].icon,
                 "temperature": Math.round(response.main.temp),
                 "wind": Math.round(response.wind.speed)
             });
